@@ -1,0 +1,23 @@
+<div class="modal" [style.display]="'block'">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nova Tarefa</h5>
+            </div>
+            <div class="modal-body">
+                <h6 class="mb-2 text-muted">Titulo:</h6>
+                <div class="form-group">
+                    <input class="form-control" type="text" [(ngModel)]="tarefa.titulo">
+                </div>
+                <h6 class="mb-2 text-muted">Descrição:</h6>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" [(ngModel)]="tarefa.descricao"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="clearModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" [disabled]="!(tarefa.titulo && tarefa.descricao)" (click)="salvar(tarefa)">Salvar Tarefa</button>
+            </div>
+        </div>
+    </div>
+</div>

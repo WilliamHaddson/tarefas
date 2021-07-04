@@ -1,0 +1,23 @@
+<div>
+  <app-tarefa-menu [evento]="alterarCaixaTexto.asObservable()" (buscarTarefa)="buscar($event)"></app-tarefa-menu>
+</div>
+
+<div class="pt-2 px-2 position-fixed top-5 end-0" [style.z-index]="5">
+  <app-tarefa-alerts [tipoAlerta]="tipoAlerta" [alertaErro]="alertaErro" [alertaSucesso]="alertaSucesso" (fecharAlertaErro)="fecharAlertaErro()" (fecharAlertaSucesso)="fecharAlertaSucesso()"></app-tarefa-alerts>
+</div>
+
+<div class="position-fixed tarefa-buttons">
+  <app-tarefa-buttons (abrirModal)="abrirModal()" [buscarTodos]="buscarTodos" (resetarPesquisa)="resetSearch()"></app-tarefa-buttons>
+</div>
+
+<div *ngIf="tarefaNova">
+  <app-tarefa-modal (closeModal)="clearModal()" (salvarTarefa)="salvar($event)"></app-tarefa-modal>
+</div>
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-4" *ngFor="let task of tarefas">
+      <app-tarefa-card [tarefa]="task" (excluirTarefa)="excluir($event)" (atualizarTarefa)="atualizar($event)"></app-tarefa-card>
+    </div>
+  </div>
+</div>
